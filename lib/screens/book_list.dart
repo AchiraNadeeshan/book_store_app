@@ -29,10 +29,22 @@ class BookList extends StatelessWidget {
               price: 1000,
             ),
             Book(
-              coverImagePath: 'assets/images/men-are-from-mars.webp',
+              coverImagePath: 'assets/images/men-are-from-mars.jpg',
               title: 'Men Are From Mars',
               author: 'John Gray',
               price: 1500,
+            ),
+            Book(
+              coverImagePath: 'assets/images/who-killed-change.jpg',
+              title: 'Who Killed Change?',
+              author: 'Ken Blanchard',
+              price: 900,
+            ),
+            Book(
+              coverImagePath: 'assets/images/the-doomsday-conspiracy.jpg',
+              title: 'The Doomsday Conspiracy',
+              author: 'Sidney Sheldon',
+              price: 1100,
             ),
           ],
         ),

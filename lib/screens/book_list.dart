@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'book_details.dart';
+import '../widgets/book.dart';
+import 'book_details_page.dart';
 
 /// Booklist widget
-/// Displays a list of books and navigates to their details page on tap.
+/// Uses the [Book] widget to display a list of books.
 class BookList extends StatelessWidget {
   const BookList({super.key});
 
-  /// Navigates to the book details page.
   void navigateToBookDetails(
     BuildContext context,
     String title,
@@ -17,7 +17,7 @@ class BookList extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BookDetails(
+        builder: (context) => BookDetailsPage(
           title: title,
           author: author,
           coverImagePath: coverImagePath,
@@ -31,11 +31,8 @@ class BookList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Ceylon Bookstore',
-          style: TextStyle(color: Colors.white), // White text color
-        ),
-        backgroundColor: Colors.blue[900], // Dark blue background color
+        title: const Text('Ceylon Bookstore'),
+        backgroundColor: Colors.blue[900], // Dark blue
       ),
       body: SafeArea(
         child: ListView(
@@ -48,14 +45,11 @@ class BookList extends StatelessWidget {
                 'assets/images/rich-dad-poor-dad.jpg',
                 1250,
               ),
-              child: const ListTile(
-                leading: Image(
-                  image: AssetImage('assets/images/rich-dad-poor-dad.jpg'),
-                  height: 50,
-                ),
-                title: Text('Rich Dad, Poor Dad'),
-                subtitle: Text('Robert T. Kiyosaki'),
-                trailing: Text('LKR 1250'),
+              child: const Book(
+                coverImagePath: 'assets/images/rich-dad-poor-dad.jpg',
+                title: 'Rich Dad, Poor Dad',
+                author: 'Robert T. Kiyosaki',
+                price: 1250,
               ),
             ),
             GestureDetector(
@@ -66,14 +60,11 @@ class BookList extends StatelessWidget {
                 'assets/images/the-alchemist.jpg',
                 1000,
               ),
-              child: const ListTile(
-                leading: Image(
-                  image: AssetImage('assets/images/the-alchemist.jpg'),
-                  height: 50,
-                ),
-                title: Text('The Alchemist'),
-                subtitle: Text('Paulo Coelho'),
-                trailing: Text('LKR 1000'),
+              child: const Book(
+                coverImagePath: 'assets/images/the-alchemist.jpg',
+                title: 'The Alchemist',
+                author: 'Paulo Coelho',
+                price: 1000,
               ),
             ),
             GestureDetector(
@@ -84,14 +75,11 @@ class BookList extends StatelessWidget {
                 'assets/images/men-are-from-mars.jpg',
                 1500,
               ),
-              child: const ListTile(
-                leading: Image(
-                  image: AssetImage('assets/images/men-are-from-mars.jpg'),
-                  height: 50,
-                ),
-                title: Text('Men Are From Mars'),
-                subtitle: Text('John Gray'),
-                trailing: Text('LKR 1500'),
+              child: const Book(
+                coverImagePath: 'assets/images/men-are-from-mars.jpg',
+                title: 'Men Are From Mars',
+                author: 'John Gray',
+                price: 1500,
               ),
             ),
             GestureDetector(
@@ -102,14 +90,11 @@ class BookList extends StatelessWidget {
                 'assets/images/who-killed-change.jpg',
                 900,
               ),
-              child: const ListTile(
-                leading: Image(
-                  image: AssetImage('assets/images/who-killed-change.jpg'),
-                  height: 50,
-                ),
-                title: Text('Who Killed Change?'),
-                subtitle: Text('Ken Blanchard'),
-                trailing: Text('LKR 900'),
+              child: const Book(
+                coverImagePath: 'assets/images/who-killed-change.jpg',
+                title: 'Who Killed Change?',
+                author: 'Ken Blanchard',
+                price: 900,
               ),
             ),
             GestureDetector(
@@ -120,15 +105,11 @@ class BookList extends StatelessWidget {
                 'assets/images/the-doomsday-conspiracy.jpg',
                 1100,
               ),
-              child: const ListTile(
-                leading: Image(
-                  image:
-                      AssetImage('assets/images/the-doomsday-conspiracy.jpg'),
-                  height: 50,
-                ),
-                title: Text('The Doomsday Conspiracy'),
-                subtitle: Text('Sidney Sheldon'),
-                trailing: Text('LKR 1100'),
+              child: const Book(
+                coverImagePath: 'assets/images/the-doomsday-conspiracy.jpg',
+                title: 'The Doomsday Conspiracy',
+                author: 'Sidney Sheldon',
+                price: 1100,
               ),
             ),
           ],

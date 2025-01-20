@@ -12,6 +12,7 @@ class BookList extends StatelessWidget {
     String title,
     String author,
     String coverImagePath,
+    String description,
     double price,
   ) {
     Navigator.push(
@@ -21,6 +22,7 @@ class BookList extends StatelessWidget {
           title: title,
           author: author,
           coverImagePath: coverImagePath,
+          description: description,
           price: price,
         ),
       ),
@@ -43,6 +45,7 @@ class BookList extends StatelessWidget {
                 'Rich Dad, Poor Dad',
                 'Robert T. Kiyosaki',
                 'assets/images/rich-dad-poor-dad.jpg',
+                'This book teaches financial literacy, advocating for the importance of assets, investments, and financial independence.',
                 1250,
               ),
               child: const Book(
@@ -58,6 +61,7 @@ class BookList extends StatelessWidget {
                 'The Alchemist',
                 'Paulo Coelho',
                 'assets/images/the-alchemist.jpg',
+                'A philosophical tale about following your dreams and finding your personal legend.',
                 1000,
               ),
               child: const Book(
@@ -73,6 +77,7 @@ class BookList extends StatelessWidget {
                 'Men Are From Mars',
                 'John Gray',
                 'assets/images/men-are-from-mars.jpg',
+                'A practical guide to understanding and improving communication in relationships.',
                 1500,
               ),
               child: const Book(
@@ -88,6 +93,7 @@ class BookList extends StatelessWidget {
                 'Who Killed Change?',
                 'Ken Blanchard',
                 'assets/images/who-killed-change.jpg',
+                'A fascinating business fable uncovering why change efforts often fail in organizations.',
                 900,
               ),
               child: const Book(
@@ -103,6 +109,7 @@ class BookList extends StatelessWidget {
                 'The Doomsday Conspiracy',
                 'Sidney Sheldon',
                 'assets/images/the-doomsday-conspiracy.jpg',
+                'A thrilling novel about secrets, conspiracies, and a race against time.',
                 1100,
               ),
               child: const Book(

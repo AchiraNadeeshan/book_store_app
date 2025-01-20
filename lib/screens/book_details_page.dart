@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../widgets/book_details_widget.dart';
 
-/// Page to display book details.
+/// Displays the details of a book in a detailed view.
 class BookDetailsPage extends StatelessWidget {
   final String title;
   final String author;
   final String coverImagePath;
+  final String description;
   final double price;
 
   const BookDetailsPage({
@@ -13,6 +14,7 @@ class BookDetailsPage extends StatelessWidget {
     required this.title,
     required this.author,
     required this.coverImagePath,
+    required this.description,
     required this.price,
   });
 
@@ -23,11 +25,14 @@ class BookDetailsPage extends StatelessWidget {
         title: const Text('Book Details'),
         backgroundColor: Colors.blue[900], // Dark blue
       ),
-      body: BookDetailsWidget(
-        title: title,
-        author: author,
-        coverImagePath: coverImagePath,
-        price: price,
+      body: SafeArea(
+        child: BookDetailsWidget(
+          title: title,
+          author: author,
+          coverImagePath: coverImagePath,
+          description: description,
+          price: price,
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart_model.dart';
+import '../screens/cart_page.dart';
 
 /// A widget to display the detailed view of a book.
 class BookDetailsWidget extends StatelessWidget {
@@ -21,6 +22,9 @@ class BookDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartModel>(context);
+    bool isInCart = cart.cartItems.any((item) => item['title'] == title);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -76,29 +80,37 @@ class BookDetailsWidget extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Add to cart functionality using Provider
-                  Provider.of<CartModel>(context, listen: false).addToCart({
-                    'title': title,
-                    'author': author,
-                    'coverImagePath': coverImagePath,
-                    'price': price,
-                    'quantity': 1,
-                  });
+                  if (isInCart) {
+                    // If already in cart, navigate to the cart page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CartPage()),
+                    );
+                  } else {
+                    // Add to cart functionality using Provider
+                    cart.addToCart({
+                      'title': title,
+                      'author': author,
+                      'coverImagePath': coverImagePath,
+                      'price': price,
+                    });
 
-                  // Show a SnackBar to confirm the addition
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('$title added to cart!'),
-                      duration: const Duration(seconds: 2),
-                    ),
-                  );
+                    // Show a SnackBar to confirm the addition
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('$title added to cart!'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue[900], // Dark blue
                 ),
-                child: const Text(
-                  'Add to Cart',
-                  style: TextStyle(color: Colors.white), // White text color
+                child: Text(
+                  isInCart ? 'In Cart' : 'Add to Cart',
+                  style:
+                      const TextStyle(color: Colors.white), // White text color
                 ),
               ),
             ],

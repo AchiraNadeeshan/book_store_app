@@ -18,6 +18,7 @@ class BookDetailsPage extends StatelessWidget {
     required this.price,
   });
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

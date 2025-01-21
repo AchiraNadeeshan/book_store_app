@@ -16,6 +16,9 @@ class CartPage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue[900],
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Set the back button color to white
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -35,13 +38,21 @@ class CartPage extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: const Icon(Icons.remove),
-                          onPressed: () =>
-                              cart.updateQuantity(item['title'], -1),
+                          onPressed: () {
+                            // Decrement quantity with bounds check (1 to 99)
+                            if (item['quantity'] > 1) {
+                              cart.updateQuantity(item['title'], -1);
+                            }
+                          },
                         ),
                         IconButton(
                           icon: const Icon(Icons.add),
-                          onPressed: () =>
-                              cart.updateQuantity(item['title'], 1),
+                          onPressed: () {
+                            // Increment quantity with bounds check (1 to 99)
+                            if (item['quantity'] < 99) {
+                              cart.updateQuantity(item['title'], 1);
+                            }
+                          },
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete),
@@ -73,9 +84,12 @@ class CartPage extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[900],
+                      backgroundColor: Colors.blue[900], // Button color
                     ),
-                    child: const Text('Buy Now'),
+                    child: const Text(
+                      'Buy Now',
+                      style: TextStyle(color: Colors.white), // White text
+                    ),
                   ),
                 ],
               ),

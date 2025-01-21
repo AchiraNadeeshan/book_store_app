@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import '../widgets/book.dart';
+import '../widgets/book_home.dart';
 import 'book_details_page.dart';
+import 'cart_page.dart';
 
 /// Booklist widget
 /// Uses the [Book] widget to display a list of books.
 class BookList extends StatelessWidget {
   const BookList({super.key});
 
+  /// Navigate to the book details page
   void navigateToBookDetails(
     BuildContext context,
     String title,
@@ -33,8 +35,27 @@ class BookList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ceylon Bookstore'),
+        title: const Text(
+          'Ceylon Bookstore',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+          ),
+        ),
         backgroundColor: Colors.blue[900], // Dark blue
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Ensure icons are white
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: ListView(

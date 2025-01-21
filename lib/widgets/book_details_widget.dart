@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/cart_model.dart';
 
 /// A widget to display the detailed view of a book.
 class BookDetailsWidget extends StatelessWidget {
@@ -74,7 +76,22 @@ class BookDetailsWidget extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Add to cart functionality
+                  // Add to cart functionality using Provider
+                  Provider.of<CartModel>(context, listen: false).addToCart({
+                    'title': title,
+                    'author': author,
+                    'coverImagePath': coverImagePath,
+                    'price': price,
+                    'quantity': 1,
+                  });
+
+                  // Show a SnackBar to confirm the addition
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('$title added to cart!'),
+                      duration: const Duration(seconds: 2),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue[900], // Dark blue

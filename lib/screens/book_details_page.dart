@@ -18,12 +18,18 @@ class BookDetailsPage extends StatelessWidget {
     required this.price,
   });
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Book Details'),
+        title: const Text(
+          'Book Details',
+          style: TextStyle(
+            color: Colors.white, // Set text color to white
+          ),
+        ),
         backgroundColor: Colors.blue[900], // Dark blue
+        iconTheme: const IconThemeData(
+            color: Colors.white), // Ensure back button icons are white
       ),
       body: SafeArea(
         child: BookDetailsWidget(

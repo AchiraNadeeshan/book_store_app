@@ -51,7 +51,7 @@ class Book extends StatelessWidget {
                   'Price: LKR $price',
                   style: const TextStyle(
                     fontSize: 16,
-                    color: Colors.green,
+                    color: Colors.black,
                   ),
                 ),
               ],

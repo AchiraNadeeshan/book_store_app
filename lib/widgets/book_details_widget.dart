@@ -26,7 +26,6 @@ class BookDetailsWidget extends StatelessWidget {
     bool isInCart = cart.cartItems.any((item) => item['title'] == title);
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           children: [
@@ -65,17 +64,20 @@ class BookDetailsWidget extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 20),
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Price: LKR $price',
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
+              Expanded(
+                child: Text(
+                  'Price: LKR $price',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ),
               ElevatedButton(
@@ -109,13 +111,13 @@ class BookDetailsWidget extends StatelessWidget {
                 ),
                 child: Text(
                   isInCart ? 'In Cart' : 'Add to Cart',
-                  style:
-                      const TextStyle(color: Colors.white), // White text color
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             ],
           ),
         ),
+        const SizedBox(height: 20), // Add some spacing at the bottom
       ],
     );
   }
